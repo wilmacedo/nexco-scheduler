@@ -1,12 +1,12 @@
 package main
 
 import (
-	"go-cron/pkg/config"
-	"go-cron/pkg/core"
+	"github.com/wilmacedo/nexco-scheduler/configs"
+	"github.com/wilmacedo/nexco-scheduler/core"
 )
 
 func main() {
-	err := config.Load()
+	err := configs.Load()
 	if err != nil {
 		panic(err)
 	}
