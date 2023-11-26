@@ -2,7 +2,6 @@ package core
 
 import (
 	"fmt"
-	"os/exec"
 	"time"
 
 	"github.com/wilmacedo/nexco-scheduler/configs"
@@ -17,13 +16,7 @@ func (runner Runner) Run() {
 	env := configs.GetEnv()
 
 	scheduler.Every(env.Interval).Second().Do(func() {
-		output, err := exec.Command("pwd").Output()
-		if err != nil {
-			panic(err)
-		}
-
 		fmt.Printf("Interval: %d\n", env.Interval)
-		fmt.Printf("Output: %s", output)
 	})
 
 	scheduler.StartBlocking()
