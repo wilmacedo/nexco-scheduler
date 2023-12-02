@@ -10,7 +10,7 @@ import (
 func TestFetcher(t *testing.T) {
 	successServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if strings.Contains(r.URL.Path, "/") {
-			w.WriteHeader(http.StatusForbidden)
+			w.WriteHeader(http.StatusOK)
 		}
 	}))
 	defer successServer.Close()
