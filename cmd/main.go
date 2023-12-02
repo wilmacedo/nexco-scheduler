@@ -11,6 +11,5 @@ func main() {
 		panic(err)
 	}
 
-	runner := core.Runner{}
-	runner.Run()
+	core.RunJobs()
 }

@@ -8,6 +8,7 @@ import (
 
 type Environment struct {
 	Interval int
+	Urls     string
 }
 
 var env *Environment
@@ -35,6 +36,7 @@ func Load() error {
 
 	env = &Environment{
 		Interval: convertedInterval,
+		Urls:     mapEnv["URLS"],
 	}
 
 	return nil
