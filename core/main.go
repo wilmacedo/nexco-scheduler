@@ -2,7 +2,6 @@ package core
 
 import (
 	"fmt"
-	"net/http"
 	"strings"
 	"time"
 
@@ -19,16 +18,9 @@ func RunJobs() {
 		urls := strings.Split(env.Urls, ",")
 
 		for _, url := range urls {
-			url = strings.Trim(url, " ")
-
-			data, err := http.Get(url)
+			err := fetcher(url)
 			if err != nil {
-				panic(err)
-			}
-			defer data.Body.Close()
-
-			if data.StatusCode != http.StatusOK {
-				fmt.Printf("[%s] url=%s code=%d\n", time.Now().Format("2006-01-02 15:04:05"), url, data.StatusCode)
+				fmt.Printf("[%s] url=%s err=%v\n", time.Now().Format("2006-01-02 15:04:05"), url, err)
 			}
 		}
 	})
